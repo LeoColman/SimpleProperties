@@ -4,6 +4,7 @@ import io.kotlintest.extensions.system.withEnvironment
 import io.kotlintest.extensions.system.withSystemProperty
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldThrow
+import io.kotlintest.shouldThrowAny
 import io.kotlintest.specs.FunSpec
 
 class SimplePropertiesTest : FunSpec() {
@@ -74,6 +75,12 @@ class SimplePropertiesTest : FunSpec() {
             
             props["qa-property"] shouldBe "QaProperty"
         }
+        
+        test("Should throw an exception on initialization if profile does not exist") {
+            
+            shouldThrowAny { SimpleProperties(listOf("InexistentProfile")) }
+        }
+        
     }
 
 }

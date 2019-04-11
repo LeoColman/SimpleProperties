@@ -4,7 +4,7 @@ import com.kerooker.simpleproperties.internal.classloader.classLoader
 import java.io.InputStream
 import java.util.Properties
 
-class PropertyFileLoader(
+internal class PropertyFileLoader(
     private val filesLocation: String = "."
 ) {
     
@@ -16,7 +16,13 @@ class PropertyFileLoader(
         }
     }
     
-    fun loadProfileFile(profile: String) = mapPropertyFile("application-$profile.properties")
+    fun loadProfileFile(profile: String): Map<String, String> {
+        return try {
+            mapPropertyFile("application-$profile.properties")
+        } catch(_: Throwable) {
+            throw FailedToLoadProfileException(profile, filesLocation)
+        }
+    }
     
     private fun mapPropertyFile(fileName: String) = streamFileFromClasspath("$filesLocation/$fileName").toMap()
     
@@ -28,5 +34,8 @@ class PropertyFileLoader(
         props.load(this)
         return props.toMap() as Map<String, String>
     }
-    
 }
+
+internal class FailedToLoadProfileException(
+    profile: String, location: String
+) : RuntimeException("Could not load profile <$profile> from <$location>")

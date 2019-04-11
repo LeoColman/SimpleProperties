@@ -1,6 +1,7 @@
 package com.kerooker.simpleproperties.internal.file
 
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.FunSpec
 
 class PropertyFileLoaderTest : FunSpec() {
@@ -36,6 +37,11 @@ class PropertyFileLoaderTest : FunSpec() {
         
         test("Should return empty map if application.properties doesn't exist") {
             PropertyFileLoader(filesLocation = "without_default").loadDefaultFile() shouldBe emptyMap<String, String>()
+        }
+        
+        test("Should throw exception if profile does not exist") {
+            val exception = shouldThrow<FailedToLoadProfileException> { PropertyFileLoader("folderLocation").loadProfileFile("inexistent") }
+            exception.message shouldBe "Could not load profile <inexistent> from <folderLocation>"
         }
     }
 

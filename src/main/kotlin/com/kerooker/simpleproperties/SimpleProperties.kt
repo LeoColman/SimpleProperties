@@ -25,13 +25,11 @@ public class SimpleProperties(
     private val filesLocation: String = "."
 ) {
     
-    private val props by lazy {
-        with(PropertyFileLoader(filesLocation)) {
+    private val props: Map<String, String> = with(PropertyFileLoader(filesLocation)) {
             val map = loadDefaultFile().toMutableMap()
             (profiles + SystemProfileLoader().loadProfiles().distinct()).forEach { map += loadProfileFile(it) }
             map.toMap()
         }
-    }
     
     /**
      * Fetches [key] from the properties
@@ -67,4 +65,4 @@ public class SimpleProperties(
  */
 public class PropertyNotDefinedException(
     missingProperty: String
-) : Exception("Property <$missingProperty> is not defined. Use simpleProperty.getOptional(\"$missingProperty\") instead")
+) : RuntimeException("Property <$missingProperty> is not defined. Use simpleProperty.getOptional(\"$missingProperty\") instead")
