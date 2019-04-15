@@ -67,7 +67,7 @@ SimpleProperties will try to find your profiles in some places:
 1. System Environment Variables
 2. Java Properties
 3. Defined at instantiation
-    a. `SimpleProperties(profiles = listOf("qa"))`
+    1. `SimpleProperties(profiles = listOf("qa"))`
     
 ## More than one profile
 
