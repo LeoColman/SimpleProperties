@@ -22,7 +22,7 @@ import com.kerooker.simpleproperties.internal.profile.SystemProfileLoader
  */
 public class SimpleProperties(
     private val profiles: List<String> = emptyList(),
-    private val filesLocation: String = "."
+    private val filesLocation: String = ""
 ) {
     
     private val props: Map<String, String> = with(PropertyFileLoader(filesLocation)) {

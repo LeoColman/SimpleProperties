@@ -5,7 +5,7 @@ import java.io.InputStream
 import java.util.Properties
 
 internal class PropertyFileLoader(
-    private val filesLocation: String = "."
+    private val filesLocation: String = ""
 ) {
     
     fun loadDefaultFile(): Map<String, String> {
@@ -24,7 +24,11 @@ internal class PropertyFileLoader(
         }
     }
     
-    private fun mapPropertyFile(fileName: String) = streamFileFromClasspath("$filesLocation/$fileName").toMap()
+    private fun mapPropertyFile(fileName: String) = streamFileFromClasspath(fileName.withDirectory()).toMap()
+    
+    private fun String.withDirectory(): String {
+        return if(filesLocation == "") this else "$filesLocation/$this"
+    }
     
     private fun streamFileFromClasspath(fileName: String) = classLoader.getResourceAsStream(fileName)
     
