@@ -7,6 +7,14 @@ import io.kotlintest.specs.FunSpec
 class PropertyFileLoaderTest : FunSpec() {
 
     init {
+        
+        test("Should load from relative path if an empty file location is provided") {
+            PropertyFileLoader("").loadDefaultFile() shouldBe mapOf(
+                "default-from-default" to "DefaultFromDefault",
+                "default-from-default2" to "DefaultFromDefault2"
+            )
+        }
+        
         test("Should load default file (application.properties) from default location (root)") {
             PropertyFileLoader().loadDefaultFile() shouldBe mapOf(
                 "default-from-default" to "DefaultFromDefault",
