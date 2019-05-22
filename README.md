@@ -2,7 +2,7 @@
 # Simple Properties
 
 
-[![Build Status](https://travis-ci.com/Kerooker/SimpleProperties.svg?branch=master)](https://travis-ci.com/Kerooker/SimpleProperties) [![GitHub](https://img.shields.io/github/license/Kerooker/SimpleProperties.svg)](https://github.com/Kerooker/SimpleProperties/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/com.kerooker.simpleproperties/simple-properties.svg)](https://search.maven.org/search?q=a:simple-properties)
+[![Build Status](https://travis-ci.com/Kerooker/SimpleProperties.svg?branch=master)](https://travis-ci.com/Kerooker/SimpleProperties) [![GitHub](https://img.shields.io/github/license/Kerooker/SimpleProperties.svg)](https://github.com/Kerooker/SimpleProperties/blob/master/LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/com.kerooker.simpleproperties/simple-properties.svg)](https://search.maven.org/search?q=g:com.kerooker.simpleproperties)
 
 ## Introduction
 
